@@ -9,6 +9,7 @@ services:
         container_name: exert-kali
         volumes:
             - ./kali:/app
+            - ./kali/metasploit/config:/usr/share/metasploit-framework/config:ro
         working_dir: /app
         entrypoint: 
             - /bin/bash
@@ -24,6 +25,7 @@ services:
         container_name: exert-kali-rolling
         volumes:
             - ./kali-rolling:/app
+            - ./kali-rolling/metasploit/config:/usr/share/metasploit-framework/config:ro
         working_dir: /app
         entrypoint: 
             - /bin/bash

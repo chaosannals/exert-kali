@@ -4,4 +4,9 @@ VOLUME [ "/app" ]
 
 RUN apt -y update && \
     apt -y upgrade && \
-    apt -y install procps metasploit-framework
+    apt -y install \
+        procps \
+        inetutils-ping \
+        metasploit-framework
+
+ENTRYPOINT [ "/app/entry" ]
