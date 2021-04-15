@@ -7,9 +7,14 @@ services:
             context: ./kali
             dockerfile: dockerfile
         container_name: exert-kali
+        depends_on: 
+            - postgresql-server
+        ports:
+            - "4444:4444"
         volumes:
             - ./kali:/app
             - ./kali/metasploit/config:/usr/share/metasploit-framework/config:ro
+            - ./kali/metasploit/modules:/root/.msf4/modules
         working_dir: /app
         entrypoint: 
             - /bin/bash
@@ -23,9 +28,14 @@ services:
             context: ./kali-rolling
             dockerfile: dockerfile
         container_name: exert-kali-rolling
+        depends_on: 
+            - postgresql-server
+        ports:
+            - "44444:44444"
         volumes:
             - ./kali-rolling:/app
             - ./kali-rolling/metasploit/config:/usr/share/metasploit-framework/config:ro
+            - ./kali-rolling/metasploit/modules:/root/.msf4/modules
         working_dir: /app
         entrypoint: 
             - /bin/bash
